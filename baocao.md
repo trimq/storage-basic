@@ -58,7 +58,7 @@ Sau đó sửa như sau:
 
 ##Add 2 card mạng cho máy và cấu hình 
 
-###B1: Tắt máy và add thêm card
+B1: Tắt máy và add thêm card
 <img src="http://prntscr.com/arzire">
 <img src="http://prntscr.com/arziwy">
 Kiểm tra xem máy đã nhận card hay chưa:
