@@ -16,7 +16,7 @@ VMware giúp giả lập máy tính ảo trên một máy tính thật. Khi cài
 <ul>
 <li>Tạo 1 thư mục để chứa máy ảo:</li>
 <li>Trong Home -> Create a new virtual machine</li>
-<img src="http://imgur.com/bBUB0Vu">
+<img src="http://i.imgur.com/bBUB0Vu.png">
 <li>Chọn hệ điều hành cần cài đặt, ở đây ta chọn ubuntu 64 bit</li>
 <img src="http://prntscr.com/arzbyr">
 <img src="http://prntscr.com/arzcaw">
@@ -59,14 +59,17 @@ Sau đó sửa như sau:
 ##Add 2 card mạng cho máy và cấu hình 
 
 B1: Tắt máy và add thêm card
+
 <img src="http://prntscr.com/arzire">
 <img src="http://prntscr.com/arziwy">
 
 B2:Kiểm tra xem máy đã nhận card hay chưa:
+
 <img src="http://prntscr.com/arzjjx">
 
 B3:Sau đó sửa file cấu hình bằng câu lệnh:
 `#vi /etc/networking/interfaces`
+
 <img src="http://prntscr.com/arzjv4">
 
 B4:Sau đó restart lại card mạng bằng lệnh:
