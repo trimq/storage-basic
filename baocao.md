@@ -18,18 +18,18 @@ VMware giúp giả lập máy tính ảo trên một máy tính thật. Khi cài
 <li>Trong Home -> Create a new virtual machine</li>
 <img src="http://i.imgur.com/bBUB0Vu.png">
 <li>Chọn hệ điều hành cần cài đặt, ở đây ta chọn ubuntu 64 bit</li>
-<img src="http://prntscr.com/arzbyr">
-<img src="http://prntscr.com/arzcaw">
-<li>Đặt tên cho máy và lưa vào thư mục đã chọn</li>
-<img src="http://prntscr.com/arzcsx">
+<img src="http://i.imgur.com/YPJXfbf.png">
+<img src="http://i.imgur.com/cNszt92.png">
+<li>Đặt tên cho máy và lưu vào thư mục đã chọn</li>
+<img src="http://i.imgur.com/t37onMR.png">
 <li>Tiến hành cài đặt phần cứng cho máy và finish</li>
-<img src="http://prntscr.com/arzd5f">
+<img src="http://i.imgur.com/Xu5idOx.png">
 </ul>
 
 ###4.Một số thao tác với card mạng ảo:
 Trong Home -> edit -> Virtual network editor
 
-<img src="http://prntscr.com/arzdxl">
+<img src="http://i.imgur.com/64WvwbW.png">
 
 Tại đây sẽ hiện ra 1 bảng bảo gồm các card mạng ảo của máy như VMnet 8, VMnet 1, VMnet 0…, ta có thể thêm hoặc xóa các card mạng ảo, gán  IP cho các card mạng.
 
@@ -37,15 +37,15 @@ Tại đây sẽ hiện ra 1 bảng bảo gồm các card mạng ảo của máy
 
 ###1.Thiết lập IP tĩnh bằng cách sửa file:
 Tại root ta gõ câu lệnh `vi /etc/networking/interfaces` để vào file cấu hình sửa IP, gateway, netmask, dns-server...
-<img src="http://prntscr.com/arzgaf">
+<img src="http://i.imgur.com/yInZiFp.png">
 
 ###2.Gán IP bằng câu lệnh:
 Sử dụng lệnh 
 `#ifconfig eth0 địa chỉ ip netmask`
-<img src="http://prntscr.com/arzh70">
+<img src="http://i.imgur.com/OAGpQQg.png">
 Gán gateway bằng câu lệnh:
 `#route add default gw địa chỉ gateway`
-<img src="http://prntscr.com/arzhrs">
+<img src="http://i.imgur.com/Ym3nAgd.png">
 
 ###3.Thiết lập IP động:
 Để thiết lập máy nhận IP động từ DHCP server, ta dùng lệnh:
@@ -54,30 +54,30 @@ Gán gateway bằng câu lệnh:
 
 Sau đó sửa như sau:
 
-<img src="http://prntscr.com/arzid7">
+<img src="http://i.imgur.com/FeJOhNP.png">
 
 ##Add 2 card mạng cho máy và cấu hình 
 
 B1: Tắt máy và add thêm card
 
-<img src="http://prntscr.com/arzire">
-<img src="http://prntscr.com/arziwy">
+<img src="http://i.imgur.com/Xu5idOx.png">
+<img src="http://i.imgur.com/Vm8Qt2x.png">
 
 B2:Kiểm tra xem máy đã nhận card hay chưa:
 
-<img src="http://prntscr.com/arzjjx">
+<img src="http://i.imgur.com/5WM1PvF.png">
 
 B3:Sau đó sửa file cấu hình bằng câu lệnh:
 `#vi /etc/networking/interfaces`
 
-<img src="http://prntscr.com/arzjv4">
+<img src="http://i.imgur.com/1vlqhfX.png">
 
 B4:Sau đó restart lại card mạng bằng lệnh:
 ```sh
 ifdown -a 
 ifup -a 
 ```
-<img src="http://prntscr.com/arzkf3">
+<img src="http://i.imgur.com/703eScg.png">
 
 
 
