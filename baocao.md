@@ -40,7 +40,8 @@ Tại root ta gõ câu lệnh `vi /etc/networking/interfaces` để vào file c�
 <img src="http://prntscr.com/arzgaf">
 
 ###2.Gán IP bằng câu lệnh:
-Sử dụng lệnh `#ifconfig eth0 địa chỉ ip netmask`
+Sử dụng lệnh 
+`#ifconfig eth0 địa chỉ ip netmask`
 <img src="http://prntscr.com/arzh70">
 Gán gateway bằng câu lệnh:
 `#route add default gw địa chỉ gateway`
