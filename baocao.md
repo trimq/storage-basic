@@ -50,6 +50,7 @@ Gán gateway bằng câu lệnh:
 Để thiết lập máy nhận IP động từ DHCP server, ta dùng lệnh:
 
 `#vi/ etc/networking/interfaces`
+
 Sau đó sửa như sau:
 
 <img src="http://prntscr.com/arzid7">
