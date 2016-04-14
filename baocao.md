@@ -44,7 +44,7 @@ Sử dụng lệnh `#ifconfig eth0 địa chỉ ip netmask`
 <img src="http://prntscr.com/arzh70">
 Gán gateway bằng câu lệnh:
 `#route add default gw địa chỉ gateway`
-<img src="http://prntscr.com/arzhrs"
+<img src="http://prntscr.com/arzhrs">
 
 ###3.Thiết lập IP động:
 Để thiết lập máy nhận IP động từ DHCP server, ta dùng lệnh:
