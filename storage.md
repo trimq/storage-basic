@@ -16,6 +16,8 @@ và GPT(GUID Partition Table).
 <li><b>GPT</b>:Là 1 kĩ thuật phân vùng mới, nó đã khắc phục hiệu quả những hạn chế của MBR. Hệ thống sử dụng GPT có thể có nhiều hơn những phân vùng trên 1 ổ đĩa. Hơn nữa, GPT không giới hạn kích thước đĩa và bảng partition table có sẵn tại multiple location nhằm chống lại sự cố hỏng hóc. Trong nhiều trường hợp, GPT là lựa chọn tốt hơn so với MBR</li>
 </ul>
 ##Formatting và filesystem:
+Filesystem là 1 phương thức để lưu trữ dữ liệu bằng cách cung cấp các thủ tục để lưu trữ, truy xuất và cập nhật giới thiệu, cũng như quản lý các không gian có sẵn trên thiết bị có chứa nó. Một filesystem tổ chức dữ liệu 1 cách hiệu quả và được điều chỉnh để phù hợp với các đặc điểm cụ thể của thiết bị.
+các phân vùng ổ đĩa khác nhau có thể được thiết lập bằng cách sử dụng một trong nhiều loại filesystem có sẵn khác nhau. Mỗi loại có những lợi thế riêg cũng như như yếu điểm riêng.
 ####2. Ext2 (second extended file system)
 - ext2 được sinh ra để khắc phục một vài hạn chế của ext như dung lượng file chỉ 2gb, file name size 255 characters
 - Khi khởi động, hệ điều hành luôn luôn có 1 chương trình để kiểm tra tính toàn vẹn của hệ thống file đó là fsck (unmount, hệ thống file có dấu hiệu bất thường). Tuy nhiên, quá trình kiểm tra và khôi phục này có thể lâu hay chậm tùy thuộc vào dung lượng của ổ cứng.  
@@ -41,6 +43,7 @@ và GPT(GUID Partition Table).
 ####4. Ext4 (fourth extended file system)
 - File size lớn
 - Hỗ trợ nhiều tính năng mới tăng performance và độ tin cậy (reliability) như multiblock allocation, delayed allocation, journal checksum. fast fsck, etc.
+
 ##Quản lý thiết bị lưu trữ tring Linux:
 <b>Device file in /dev:</b>
 Trong Linux, tất cả mọi thứ đều thể hiện là file. Bao gồm phần cứng như các thiết bị lưu trữ, được thể hiện trong hệ thống như là các file trong thư mục `/dev`. Thông thường các file đại diện cho thiêt bị lưu trữ thường có dạng `sd`, `hd`. Ví dụ ổ đĩa  trên server có dạng
