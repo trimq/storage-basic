@@ -51,7 +51,7 @@ Có những cải tiến kĩ thuật trên FAT và HPFS, cải thiện khả nă
 ####6. XFS:
 Filesystem journaling được phát triển bởi SGI, nó cung cấp thông lượng rất nhanh trên các tập tin lớn và filesystem
 
-##Quản lý thiết bị lưu trữ tring Linux:
+##Quản lý thiết bị lưu trữ trong Linux:
 <b>Device file in /dev:</b>
 Trong Linux, tất cả mọi thứ đều thể hiện là file. Bao gồm phần cứng như các thiết bị lưu trữ, được thể hiện trong hệ thống như là các file trong thư mục `/dev`. Thông thường các file đại diện cho thiêt bị lưu trữ thường có dạng `sd`, `hd`. Ví dụ ổ đĩa  trên server có dạng
 ```sh
