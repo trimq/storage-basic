@@ -16,6 +16,31 @@ và GPT(GUID Partition Table).
 <li><b>GPT</b>:Là 1 kĩ thuật phân vùng mới, nó đã khắc phục hiệu quả những hạn chế của MBR. Hệ thống sử dụng GPT có thể có nhiều hơn những phân vùng trên 1 ổ đĩa. Hơn nữa, GPT không giới hạn kích thước đĩa và bảng partition table có sẵn tại multiple location nhằm chống lại sự cố hỏng hóc. Trong nhiều trường hợp, GPT là lựa chọn tốt hơn so với MBR</li>
 </ul>
 ##Formatting và filesystem:
+####2. Ext2 (second extended file system)
+- ext2 được sinh ra để khắc phục một vài hạn chế của ext như dung lượng file chỉ 2gb, file name size 255 characters
+- Khi khởi động, hệ điều hành luôn luôn có 1 chương trình để kiểm tra tính toàn vẹn của hệ thống file đó là fsck (unmount, hệ thống file có dấu hiệu bất thường). Tuy nhiên, quá trình kiểm tra và khôi phục này có thể lâu hay chậm tùy thuộc vào dung lượng của ổ cứng.  
+- Không có tính năng journal
+  -> Thay vì ghi trực tiếp vào storage device và sau đó update lên inode table. Thì journaling file system sẽ ghi thông tin lên một file tạm thời (được gọi là journal). Sau khi data được ghi thành công lên storage device và inode table, thì journal entry sẽ bị xóa đi.
+  -> journaling chỉ được sử dụng khi ghi dữ liệu lên ổ cứng, khắc phục vấn đề khi ổ cứng gặp vấn đề. Nếu không có journaling, hệ thống sẽ không biết được file có được ghi đầy đủ lên ổ đĩa hay không.
+- Max file size từ 16gb - 32gb
+- ext2 file system max từ 2tb - 32tb
+- ext2 thường được dùng cho flash-based storage media (như SD cards, and USB flash drives)
+- Kiến trúc Ext2 dùng cấu trúc dữ liệu được gọi là nút định dạng (inode) để tham chiếu và định vị tập tin cũng như các dữ liệu tương ứng. Bảng inode chứa các thông tin gồm loại tập tin, kích thước, quyền truy cập, con trỏ đến những khối dữ liệu liên quan và các thuộc tính khác.
+- Nhóm các data blocks cho một file => file system không phải search toàn bộ physical device để tìm được data block khi read.
+
+
+####3. Ext3 (third extended file system)
+- Hỗ trợ cơ chế journaling file system (tuy an toàn hơn, nhưng chậm hơn)
+  + journal: metadata và content được lưu trên journal 
+  + ordered: metadata được lưu trên journal. Metadata được ghi chỉ sau khi content được lưu trên disk.
+  + writeback: metadata được lưu trên joural. Metadata có thể được ghi trước hoặc sau khi content được ghi trên disk.
+- Convert từ ext2 sang ext3 trực tiếp (không cần backup/restore)
+- Directory chứa tối đa 32000 subdirectory
+
+
+####4. Ext4 (fourth extended file system)
+- File size lớn
+- Hỗ trợ nhiều tính năng mới tăng performance và độ tin cậy (reliability) như multiblock allocation, delayed allocation, journal checksum. fast fsck, etc.
 ##Quản lý thiết bị lưu trữ tring Linux:
 <b>Device file in /dev:</b>
 Trong Linux, tất cả mọi thứ đều thể hiện là file. Bao gồm phần cứng như các thiết bị lưu trữ, được thể hiện trong hệ thống như là các file trong thư mục `/dev`. Thông thường các file đại diện cho thiêt bị lưu trữ thường có dạng `sd`, `hd`. Ví dụ ổ đĩa  trên server có dạng
