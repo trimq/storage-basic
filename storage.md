@@ -44,6 +44,13 @@ các phân vùng ổ đĩa khác nhau có thể được thiết lập bằng c�
 - File size lớn
 - Hỗ trợ nhiều tính năng mới tăng performance và độ tin cậy (reliability) như multiblock allocation, delayed allocation, journal checksum. fast fsck, etc.
 
+
+####5. NTFS:
+Có những cải tiến kĩ thuật trên FAT và HPFS, cải thiện khả năng hỗ trợ cho các metadata và sử dụng các cấu trúc dữ liệu tiên tiến để cải thiện hiệu suất. Thêm vào đó là phần mở rộng bổ sung chẳng hạn như kiểm soát truy cập bảo mật danh sách (ACL) và filesystem journaling
+
+####6. XFS:
+Filesystem journaling được phát triển bởi SGI, nó cung cấp thông lượng rất nhanh trên các tập tin lớn và filesystem
+
 ##Quản lý thiết bị lưu trữ tring Linux:
 <b>Device file in /dev:</b>
 Trong Linux, tất cả mọi thứ đều thể hiện là file. Bao gồm phần cứng như các thiết bị lưu trữ, được thể hiện trong hệ thống như là các file trong thư mục `/dev`. Thông thường các file đại diện cho thiêt bị lưu trữ thường có dạng `sd`, `hd`. Ví dụ ổ đĩa  trên server có dạng
