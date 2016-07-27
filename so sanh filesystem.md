@@ -12,12 +12,12 @@
 
 ####So sánh giữa FAT32 và NTFS
 
-| Filesystem | NTFS | FAT32 |
-|------------|-------|------|
-| Max partition size | 2TB | 2TB |
-| Số file trên partition | Không hạn chế | Không hạn chế |
-| Max file size | Chỉ hạn chế bởi kích thước partition | 4GB |
-| File name lenght | 255 characters | 255 characters |
-| Chế độ bảo mật | Có | Không |
-| Khả năng hồi phục | Có | Không |
-| Hiệu năng hoạt động | Thấp trên các ổ đĩa nhỏ, cao trên các ổ đĩa lớn | Cao trên các ổ đĩa nhỏ và thấp trên các ổ đĩa lớn |
+| Filesystem | NTFS | FAT32 | FAT 16 |
+|------------|-------|------|--------|
+| Max partition size | 2TB | 2TB | 2GB |
+| Số file trên partition | Không hạn chế | Không hạn chế | 65000 |
+| Max file size | Chỉ hạn chế bởi kích thước partition | 4GB | 2GB |
+| File name lenght | 255 characters | 255 characters | 255 |
+| Chế độ bảo mật | Có | Không | Không |
+| Khả năng hồi phục | Có | Không | Không |
+| Hiệu năng hoạt động | Thấp trên các ổ đĩa nhỏ, cao trên các ổ đĩa lớn | Cao trên các ổ đĩa nhỏ và thấp trên các ổ đĩa lớn | Cao trên ổ đĩa nhỏ và thấp trên các ổ đĩa lớn |
