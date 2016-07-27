@@ -7,3 +7,17 @@
 | Phục hồi dữ liệu | cần fsck để phục hồi dữ liệu | tự động file phục hồi dữ liệu | tự động file phục hồi dữ liệu | | |
 | Max file size ( Block size 1KB-8KB) | 16GB-2TB  | 16GB-2TB | 16GB-16TB | 16 EB | 8 exbibytes-1 byte |
 | Max filename size | 255 bytes | 255 bytes | 255 bytes | 255 ASCII character | 255 bytes |
+
+
+
+####So sánh giữa FAT32 và NTFS
+
+| Filesystem | NTFS | FAT32 |
+|------------|-------|------|
+| Max partition size | 2TB | 2TB |
+| Số file trên partition | Không hạn chế | Không hạn chế |
+| Max file size | Chỉ hạn chế bởi kích thước partition | 4GB |
+| File name lenght | 255 characters | 255 characters |
+| Chế độ bảo mật | Có | Không |
+| Khả năng hồi phục | Có | Không |
+| Hiệu năng hoạt động | Thấp trên các ổ đĩa nhỏ, cao trên các ổ đĩa lớn | Cao trên các ổ đĩa nhỏ và thấp trên các ổ đĩa lớn |
