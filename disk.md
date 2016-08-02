@@ -2,7 +2,7 @@
 Ổ đĩa cứng bao gồm nhiều thành phần 
 <src img="">
 ###Cấu trúc dữ liệu của đĩa cứng:
-<src img="http://imgur.com/nHgiGCV"
+<src img="http://imgur.com/nHgiGCV">
 #####1. Track:
 Trên một mặt làm việc của đĩa chia thanh nhiều vòng tròn đồng tâm tạo thành các track để xác định các vùng dữ liệu riêng biệt trên mặt đĩa.
 #####2. Sector:
