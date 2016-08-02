@@ -23,6 +23,7 @@ Là khoảng thời gian để di chuyển head giữa các track
 - Khoảng thời gian di chuyển head tới secter hay nói cách khác đó là khoảng thời gian 1 I/O được xử lí
 - Latency tăng lên khi lượng I/O tăng lên.
 <src img="">
+
 ##Đọc và ghi dữ liệu trên bề mặt:
 Sự hoạt động của đĩa cứng cần thực hiện đồng thời hai chuyển động: Chuyển động quay của các đĩa và chuyển động ra vô của các đầu đọc. Đĩa từ quay được nhờ gắn cùng trục với động cơ và có tốc độ rất lớn từ 3600 đến 15.000 vòng/phút. Mỗi loại ổ đĩa cứng có một tốc độ nhất định tùy theo công nghệ chế tạo.
 Khi đĩa cứng quay đều, cần di chuyển đầu đọc sẽ di chuyển đến các vị trí trên bề mặt phủ vật liệu từ theo phương bán kính của đĩa. Chuyển động này kết hợp với chuyển động quay của đĩa có thể làm đầu đọc/ghi tới bất kỳ vị trí nào trên bề mặt đĩa.
@@ -30,13 +31,17 @@ Tại các vị trí cần đọc ghi, đầu đọc/ghi có các bộ cảm bi�
 Dữ liệu được ghi/đọc đồng thời trên mọi đĩa. Việc thực hiện phân bổ dữ liệu trên các đĩa được thực hiện nhờ các mạch điều khiển trên bo mạch của ổ đĩa cứng.
 ##Random Access và Sequential Access:
 <src img="">
+
 #####1. Random Access:
 - Là hành động truy xuất ngẫu nhiên bất kì trên ổ đĩa bất kể số lượng và kích thước bao nhiêu. Random Access thường được dùng để thể hiện IOPS của hệ thống lưu trữ
 - Random IO sẽ có dạng: đọc-tìm kiếm-viết-tìm kiếm...
+
 #####2. Sequential Access:
 - Truy xuất dạng tuần tự là hành động truy cập vào một nhóm các vùng nhớ được xác định trước, theo 1 thứ tự sắp xếp trên ổ đĩa. Sequential Access thường được dùng để thể hiện throughput của hệ thống lưu trữ.
 - Sequential có dạng: đọc-đọc-đọc hoặc viết-viết-viết...
+
 ##IOPS và Throughtput:
+
 #####1. IOPS:
 - Là viết tắt của Input-Output per second. Ở các thiết bị lưu trữ file thì băng thông (Mbps) là thông số quan trọng nhất.  Còn đối với các thiết bị lưu trữ cho đám mây CLOUD thì IOPS quyết định độ “nhạy” và độ “NHANH” của máy ảo.
 - Đối với HDD, IOPS được tính bởi công thức:
