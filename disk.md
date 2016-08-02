@@ -20,6 +20,7 @@ Thường được làm bằng nhôm hoặc thủy tinh, trên bề mặt đư�
 #####Seek:
 Là khoảng thời gian để di chuyển head giữa các track
 #####Latency:
+<src img="http://louwrentius.com/static/images/io03.png">
 - Khoảng thời gian di chuyển head tới secter hay nói cách khác đó là khoảng thời gian 1 I/O được xử lí
 - Latency tăng lên khi lượng I/O tăng lên.
 <src img="">
