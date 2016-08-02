@@ -53,5 +53,6 @@ IOPS = 1/(seek + Latency)
 #####2. Throughtput:
 Là thông số dùng để chỉ lượng dữ liệu lớn nhất có thể chuyển tới hệ thống trong 1 giây 
 
-
+##Bộ nhớ đệm (cache hoặc buffer):
+Bộ nhớ đệm có nhiệm vụ lưu tạm dữ liệu trong quá trình làm việc của ổ đĩa cứng nên độ lớn của bộ nhớ đệm có ảnh hưởng đáng kể tới hiệu suất hoạt động của ổ đĩa cứng bởi việc đọc/ghi không xảy ra tức thời (do phụ thuộc vào sự di chuyển của đầu đọc/ghi, dữ liệu được truyền tới hoặc đi) sẽ được đặt tạm trong bộ nhớ đệm
 
