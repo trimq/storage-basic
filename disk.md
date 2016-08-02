@@ -1,8 +1,9 @@
 #Cấu tạo ổ đĩa cứng:
 Ổ đĩa cứng bao gồm nhiều thành phần 
+<img src="http://data.sinhvienit.net/lab1/hdd_files/hdd17.jpg">
 <src img="">
 ###Cấu trúc dữ liệu của đĩa cứng:
-<img src="http://imgur.com/nHgiGCV">
+<img src="http://data.sinhvienit.net/lab1/hdd_files/hdd16.jpg">
 #####1. Track:
 Trên một mặt làm việc của đĩa chia thanh nhiều vòng tròn đồng tâm tạo thành các track để xác định các vùng dữ liệu riêng biệt trên mặt đĩa.
 #####2. Sector:
@@ -23,7 +24,7 @@ Là khoảng thời gian để di chuyển head giữa các track
 <img src="http://louwrentius.com/static/images/io03.png">
 - Khoảng thời gian di chuyển head tới secter hay nói cách khác đó là khoảng thời gian 1 I/O được xử lí
 - Latency tăng lên khi lượng I/O tăng lên.
-<src img="">
+<img src="http://louwrentius.com/static/images/io055.png">
 
 ##Đọc và ghi dữ liệu trên bề mặt:
 Sự hoạt động của đĩa cứng cần thực hiện đồng thời hai chuyển động: Chuyển động quay của các đĩa và chuyển động ra vô của các đầu đọc. Đĩa từ quay được nhờ gắn cùng trục với động cơ và có tốc độ rất lớn từ 3600 đến 15.000 vòng/phút. Mỗi loại ổ đĩa cứng có một tốc độ nhất định tùy theo công nghệ chế tạo.
