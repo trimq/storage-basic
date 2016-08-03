@@ -12,6 +12,7 @@ Thời gian ổ cứng bắt đầu thưc hiện 1 data transfer. Trong HDD vậ
 - <b>Seek time</b>: Với ổ đĩa quay, seek time là khoảng thời gian để head di chuyển giữa các track. Hay nói cách khác là khoảng thời gian mà head cần có để di chuyển đến các track của đĩa quay nơi chứa dữ liệu sẽ được đọc hoặc ghi.
 - <b>Rotatinal latency</b>: Rotatinal latency hay còn gọi là latency là khoảng thời gian head được chuyển tới sector hay nói cách khác đó là khoảng thừoi gian 1 I/O được xử lí, latency sẽ tăng lên khi lượng I/O tăng lên. Rotatinal latency phụ thuộc vào tốc độ quay của ổ đĩa, tốc độ quay càng cao thì latency sẽ càng giảm
 - <b>Typycal HDD figures</b>
+
 | HDD Spindle (rpm) | Average rotational latency |
 |-------------------|----------------------------|
 | 4200 | 7,14 |
