@@ -2,7 +2,11 @@
 
 #####1. Throughput:
 Chỉ ra tốc độ transfer data ( MB/s hoặc GB/s). Là thông số khi check performance của ổ cứng bằng câu lệnh "dd"
-trong linux.
+trong linux. Bao gồm cả internal rate (chuyển dữ liệu giữa disk surface và controller của driver) và extenal rate (chuyển dữ liệu giữa controller trên driver và hệ thống máy chủ) 
+
+
+
+
 
 #####2. Latency(ms):
 Thời gian ổ cứng bắt đầu thưc hiện 1 data transfer. Trong HDD vật lý truyền thống, latency bao gồm seek time
@@ -22,9 +26,6 @@ Thời gian ổ cứng bắt đầu thưc hiện 1 data transfer. Trong HDD vậ
 | 15000 | 2,00 |
 
 
-
-
-
 #####3. IOPS:
 - Input/Output Operations Per Second - số thao tác đọc ghi trên ổ cứng trong 1s. Trong điện toán đám mây, nơi mà tài 
 nguyên phần cứng được chia sẻ với nhiều người, IOPS quyết định độ nhanh và nhạy của volume do bản chất IOPS càng cao thì 
@@ -33,4 +34,6 @@ càng nhiều thao tác có thể thực hiện được đồng thời 1 lúc, 
 ```sh
 IOPS = 1/(seek + latency)
 ```
+
+
 
