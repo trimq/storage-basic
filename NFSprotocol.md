@@ -11,10 +11,14 @@ NFS (Network File System) là 1 hệ thống cung cấp dịch vụ chia sẻ fi
 Để kiểm tra hoạt động của giao thức NFS, tôi sẽ sử dụng phần mềm Wireshark để bắt gói tin từ client đến server hoặc ngược lại
 - Bắt gói tin sử dụng giao thức NFS:
 <img src="http://i.imgur.com/dWiixNC.png">
-Gói tin đi từ Server đến client
+<ul>
+<li>Gói tin đi từ Server đến client với địa chỉ IP nguồn (Src) là 172.16.69.30 tới địa chỉ IP đích (Dst) 172.16.69.31</li>
+<li>Sử dụng giao thức TCP (do NFS sử dụng mô hình truyền tin OSI)</li>
+
 <img src="http://i.imgur.com/FDnuk9t.png">
 - Kiểm tra phiên bản NFS:
 <img src="http://i.imgur.com/KnyryWA.png">
+Ở đây là phiên bản NFSv4
 - Kiểm tra port:
 <img src="http://i.imgur.com/VFmEuNS.png">
 
