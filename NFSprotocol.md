@@ -7,7 +7,7 @@ NFS (Network File System) là 1 hệ thống cung cấp dịch vụ chia sẻ fi
 - Sử dụng mô hình OSI
 - Do sử dụng RPC để định tuyến nên NFS sử dụng các port 2049 và 111 cả trên client và server.
 
-####2. Kiếm tra hoạt động của NFS với phần mềm Wireshark:
+##2. Kiếm tra hoạt động của NFS với phần mềm Wireshark:
 Để kiểm tra hoạt động của giao thức NFS, tôi sẽ sử dụng phần mềm Wireshark để bắt gói tin từ client đến server hoặc ngược lại
 - Bắt gói tin sử dụng giao thức NFS:
 <img src="http://i.imgur.com/dWiixNC.png">
@@ -22,7 +22,7 @@ NFS (Network File System) là 1 hệ thống cung cấp dịch vụ chia sẻ fi
 - Kiểm tra port:
 <img src="http://i.imgur.com/VFmEuNS.png">
 
-####3. Kiếm tra hoạt động của NFS với lệnh tcpdump:
+##3. Kiếm tra hoạt động của NFS với lệnh tcpdump:
 - Sử dụng tcpdump qua port:
 ```sh
 tcpdump -i eth1 port 2049
