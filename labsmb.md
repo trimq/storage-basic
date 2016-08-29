@@ -4,7 +4,9 @@ Chia sẻ file từ máy Linux cho máy Window
 ##2. Chuẩn bị:
 - 1 Máy Ubuntu server 14.04, IP:172.16.69.50
 - 1 Máy Window 7
+
 ##3. Thực hiện
+
 ####Trên máy Ubuntu server 14.04
 - Tải gói `samba`:
 ```sh
