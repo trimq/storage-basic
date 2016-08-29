@@ -23,8 +23,8 @@ mkdir /home/<user_name>/<folder_name>/<file_name>
 Trong đó:
 <ul>
 <li>user_name: là tài khoản mà máy window sử dụng để truy cập vào máy Linux</li>
-<li>folder_name: là thư mục mà máy Linux chia sẻ<li>
-<li>folder_name: là tên file mà máy Linux chia sẻ<li>
+<li>folder_name: là thư mục mà máy Linux chia sẻ</li>
+<li>folder_name: là tên file mà máy Linux chia sẻ</li>
 </ul>
 Ví dụ ở đây tôi sẽ tạo thư mục như sau:
 ```sh
