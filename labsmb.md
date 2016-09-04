@@ -4,7 +4,9 @@ Chia sẻ file từ máy Linux cho máy Window
 ##2. Chuẩn bị:
 - 1 Máy Ubuntu server 14.04, IP:172.16.69.50
 - 1 Máy Window 7
+
 ##3. Thực hiện
+
 ####Trên máy Ubuntu server 14.04
 - Tải gói `samba`:
 ```sh
@@ -21,8 +23,8 @@ mkdir /home/<user_name>/<folder_name>/<file_name>
 Trong đó:
 <ul>
 <li>user_name: là tài khoản mà máy window sử dụng để truy cập vào máy Linux</li>
-<li>folder_name: là thư mục mà máy Linux chia sẻ<li>
-<li>folder_name: là tên file mà máy Linux chia sẻ<li>
+<li>folder_name: là thư mục mà máy Linux chia sẻ</li>
+<li>folder_name: là tên file mà máy Linux chia sẻ</li>
 </ul>
 Ví dụ ở đây tôi sẽ tạo thư mục như sau:
 ```sh
