@@ -3,9 +3,13 @@
 ###[1. Tổng quan về SMB/CIFS](#tongquan)
 
 ###[2. Hoạt động của SMB/CIFS](#hoatdong)
+
 -[2.1 Đặc điểm của giao thức](#dacdiem)
+
 -[2.2 User/share level security](#security)
+
 -[2.3 Package Header](#header)
+
 -[2.4 Package sequence walk throught](#work)
 
 ###[3. Ứng dụng của SMB/CIFS](#ungdung)
