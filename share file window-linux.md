@@ -13,9 +13,11 @@ Chia sẻ file từ máy Window cho máy Linux
 - Tạo file và share file đó:
 Tôi sẽ tạo 1 file trên máy Window 7 có tên là `tri` và tạo 1 file `tri.txt` trong file `tri` rồi Share file đó.
 <img src="http://i.imgur.com/QW9UtzZ.png">
-Phân quyền cho người dùng được phép truy cập xem và sửa
+
+- Phân quyền cho người dùng được phép truy cập xem và sửa
 <img src="http://i.imgur.com/tT48jMO.png">
 Sau đó hoàn tất chia sẻ file.
+
 ###Trên máy Ubuntu 14.04
 - Cài đặt gói `ciff-utils`
 ```sh
