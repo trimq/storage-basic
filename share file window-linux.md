@@ -1,19 +1,23 @@
 #Chia sẻ file từ từ Window cho Linux
 ##1. Mục tiêu:
 Chia sẻ file từ máy Window cho máy Linux
+
 ##2. Chuẩn bị
-- 1 Máy Window 7 có nhiệm vụ chia sẻ file
-- 1 Máy Ubuntu 14.04
+- 1 Máy Window 7 có nhiệm vụ chia sẻ file (IP: 172.16.69.100)
+- 1 Máy Ubuntu 14.04 (IP: 172.16.69.50)
+
 ##3. Thực hiện:
 ###Trên máy Window
 - Chọn Open Network and Sharing Center > Change advanced sharing settings, sau đó "turn on network discovery" và "Turn on file and printer sharing " rồi Save Changes.
-<img src="http://genknews.genkcdn.vn/2013/4-5bf8d.jpg">
+<img src="http://i.imgur.com/uQrBVbD.png">
 - Tạo file và share file đó:
 Tôi sẽ tạo 1 file trên máy Window 7 có tên là `tri` và tạo 1 file `tri.txt` trong file `tri` rồi Share file đó.
 <img src="http://i.imgur.com/QW9UtzZ.png">
-Phân quyền cho người dùng được phép truy cập xem và sửa
+
+- Phân quyền cho người dùng được phép truy cập xem và sửa
 <img src="http://i.imgur.com/tT48jMO.png">
 Sau đó hoàn tất chia sẻ file.
+
 ###Trên máy Ubuntu 14.04
 - Cài đặt gói `ciff-utils`
 ```sh
