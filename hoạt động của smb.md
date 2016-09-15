@@ -69,6 +69,12 @@ SMB_COM_NEGOTIATE
 <li>ERR CMD(0xFF): Command không phải dạng SMB</li>
 </ul>
 
+- <b>Tree ID (TID)</b>: Là 1 sô 16 bits để nhận dạng tài nguyên truy cập, thông thường là ổ đĩa được chia sẻ hoặc máy in. Khi gói tin trao đổi mà không có hoạt động gì với những tài nguyên như trên, Tid sẽ được bỏ qua.
+- <b>Process ID (PID)</b>: Là 1 số 16 bit để nhận dạng các yêu cầu từ phía client đến server. Server sẽ sử dụng Pid để kiểm tra lỗi trong quá trình thực hiện truy cập vào tài nguyên.
+- <b>User ID (UID)</b>: Là 1 số 16 bit sử dụng để nhận dạng người dùng đã yêu cầu truy cập tới tài nguyên trên server.
+- <b>Multiplex ID (MID)</b>: Là 1 giá trị 16 bits sử dụng để có thể cho phép nhiều request gửi yêu cầu tới server cùng lúc mà không bị nhầm lẫn do mỗi request sẽ có 1 Mid riêng. Khi server phản hồi lại request, nó cũng sẽ sử dụng Mid tương tự đê phản hồi.
+- 
+
 <a name"work">
 ###2.4 Package sequence walk throught:
 Thể hiện gói tin được gửi từ client đến server và ngược lại.
