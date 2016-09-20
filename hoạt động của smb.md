@@ -3,27 +3,32 @@
 ###[1. Tổng quan về SMB/CIFS](#tongquan)
 
 ###[2. Hoạt động của SMB/CIFS](#hoatdong)
--[2.1 Đặc điểm của giao thức](#dacdiem)
--[2.2 User/share level security](#security)
--[2.3 Package Header](#header)
--[2.4 Package sequence walk throught](#work)
+
+[2.1 Đặc điểm của giao thức](#dacdiem)
+
+[2.2 User/share level security](#security)
+
+[2.3 Package Header](#header)
+
+[2.4 Package sequence walk throught](#work)
 
 ###[3. Ứng dụng của SMB/CIFS](#ungdung)
 
 ###[4. Tài liệu tham khảo](#thamkhao)
 
+==============================================
 
 <a name="tongquan">
-1. Tổng quan về SMB/CIFS
+##1. Tổng quan về SMB/CIFS
 Là 1 giao thức mạng cho phép chia sẻ file giữa các network nodes. Giao thức dựa trên mô hình client/server, ở đó client sẽ các package đến server và server sẽ respond lại package. Mỗi package được gửi đi sẽ có header chứa thông tin về package đó. Mỗi package cũng chứa command field biểu thị mục đích của package đó như: login, openfile, read from a file, write file.
 
 <a name="hoatdong">
-###2. Hoạt động của SMB/CIFS:
+##2. Hoạt động của SMB/CIFS:
 
 <img src="https://www.samba.org/cifs/docs/images/img00002-new.jpg">
 
 <a name="dacdiem">
-####2.1 Đặc điểm của giao thức:
+###2.1 Đặc điểm của giao thức:
 <img src="http://i.imgur.com/47BBrkX.jpg">
 - <b>Client/Server</b> (request/respond):
 Kiến trúc của SMB/CIFS dựa vào mô hình client/server. Về cơ bản, client sẽ gửi yêu cầu đến server, sau đó server sẽ respond lại yêu cầu đó.
@@ -35,7 +40,7 @@ Giao thức cho phép gửi nhiều request 1 lúc được thực hiện thông
 - <b>Protocol negotiation</b>: Khi 1 client muốn truy cập 1 file trên server từ xa, đầu tiên client sẽ gửi 1 package yêu cầu 1 phiên làm việc. Package này chứa các thông tin về phương thức làm việc. Khi server phản hồi lại rằng nó hiểu thông tin được đưa ra và bắt đầu phiên làm việc.
 
 <a name="security">
-####2.2 User/share level security:
+###2.2 User/share level security:
 Khi 1 file được chia sẻ hoặc người dùng muốn truy cập vào file thì sẽ có những chính sách bảo mật
 
 - <b>User security</b>: Người dùng muốn truy cập vào file cần cung cấp username, password để server có thể kiểm soát truy cập
@@ -47,7 +52,7 @@ Khi 1 file được chia sẻ hoặc người dùng muốn truy cập vào file 
 </ul>
 
 <a name="header">
-####2.3 Package header
+###2.3 Package header
 <img src="http://i.imgur.com/DWXFWWk.png">
 
 - <b>Header</b>: Mỗi package chứa 4 byte header
@@ -64,8 +69,13 @@ SMB_COM_NEGOTIATE
 <li>ERR CMD(0xFF): Command không phải dạng SMB</li>
 </ul>
 
+- <b>Tree ID (TID)</b>: Là 1 sô 16 bits để nhận dạng tài nguyên truy cập, thông thường là ổ đĩa được chia sẻ hoặc máy in. Khi gói tin trao đổi mà không có hoạt động gì với những tài nguyên như trên, Tid sẽ được bỏ qua.
+- <b>Process ID (PID)</b>: Là 1 số 16 bit để nhận dạng các yêu cầu từ phía client đến server. Server sẽ sử dụng Pid để kiểm tra lỗi trong quá trình thực hiện truy cập vào tài nguyên.
+- <b>User ID (UID)</b>: Là 1 số 16 bit sử dụng để nhận dạng người dùng đã yêu cầu truy cập tới tài nguyên trên server.
+- <b>Multiplex ID (MID)</b>: Là 1 giá trị 16 bits sử dụng để có thể cho phép nhiều request gửi yêu cầu tới server cùng lúc mà không bị nhầm lẫn do mỗi request sẽ có 1 Mid riêng. Khi server phản hồi lại request, nó cũng sẽ sử dụng Mid tương tự đê phản hồi.
+
 <a name"work">
-####2.4 Package sequence walk throught:
+###2.4 Package sequence walk throught:
 Thể hiện gói tin được gửi từ client đến server và ngược lại.
 <img src="https://richardkok.files.wordpress.com/2011/02/01-ntlm1.jpg?w=595">
 
@@ -84,9 +94,11 @@ FS: Server
 
 <a name="thamkhao">
 ##4. Tài liệu tham khảo:
+
 ####Cấu hình chia sẽ file giữa Linux và Window tham khảo tại đây:
 - https://github.com/hocchudong/Ghichep-Storage/blob/master/TriMQ/share%20file%20window-linux.md
 - https://github.com/trimq/vmwareee/blob/master/labsmb.md
+
 ####Tài liệu:
 - https://en.wikipedia.org/wiki/Server_Message_Block#SMB_3.0
 - https://www.samba.org/cifs/docs/what-is-smb.html
