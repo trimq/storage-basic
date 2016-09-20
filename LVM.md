@@ -17,9 +17,13 @@ Chức năng chính của LVM được thực hiện bởi các thành phần n�
 
 -<b>Physical Volumes</b>: Khối thiết bị vật lý hoặc các thiết khác bị như đĩa (RAID) được LVM sử dụng như là vật liệu để xây dựng lên các tầng cao hơn. Physical volumes là các thiết bị lưu trữ thông thường
 
+<img src="https://docs.fedoraproject.org/en-US/Fedora/14/html/Storage_Administration_Guide/images/lvg.png">
+
 -<b>Volume Groups</b>: LVM kết hợp các Physical volume thành pool lưu trữ được hiểu như các volume group. Volume group có các đặc tính như là thiết bị nền tảng và có chức năng như 1 đơn vị logical thống nhất với khả năng lưu trữ và kết hợp các khối vật lý thành phần.
 
+
 -<b>Logical Volumes</b> 1 Volume group có thể chia thành các Logical volumes. Logical có chức năng tương đương với các phân vùng trên ổ đĩa nhưng có sự linh hoạt hơn nhiều. Logical volume là thành phần chính mà người dùng và các ứng dụng tương tác với nó.
+<img src="https://docs.fedoraproject.org/en-US/Fedora/14/html/Storage_Administration_Guide/images/lvols.png">
 
 Tóm lại, LVM là công nghệ cho phép kết hợp các Physical volume thành các Volume group để từ đó có thể phân chia thành Logical volume có thể sử dụng 1 cách linh hoạt hơn so với các phân vùng trên ổ đĩa.
  
