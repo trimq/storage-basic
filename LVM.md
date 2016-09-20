@@ -36,5 +36,65 @@ Extent trên Physical volume gọi là Physical extent, trong khi Extent của l
 LVM có thể sao chép và sắp xếp các physical extent mà không gây gián đoạn cho người dùng. Logical volume có thể dễ dàng mở rộng hoặc thu nhỏ bằng cách thêm extent hoặc giảm extent
  
 
+##4. Sử dụng LVM:
+
+####Thiết lập 1 hệ thống lưu trữ sử dụng LVM
+
+- Kiểm tra những block devices mà LVM có thể thấy và quản lý:
+```sh
+lvmdiskscan
+```
+Các thành phần như `/dev/ram` được sử dụng để cải thiện hiệu suất
+
+- <b>Tạo các Physical volume</b>:
+```sh
+pvcreate /dev/sdb /dev/sdc
+```
+- Kiểm tra các Physical volume:
+```sh
+pvs
+```
+
+- <b>Tạo Volume group</b>
+```sh
+vgcreate <name_group> /dev/sdb /dev/sdc
+```
+- Kiểm tra các Volume group đã tạo
+```sh
+vgs
+```
+
+- <b>Tạo Logical volume</b>
+```sh
+lvcreate -L 10G -n <name_lv> <name_vg>
+```
+<ul>
+<li>-L 10G là tùy chỉnh dung lượng của Logical volume</li>
+<li>- n tên của Logical volume</li>
+<li> hoặc có thể tùy chỉnh là 100%FREE để tạo tất cả dung lượng còn lại trong volume group thành 1 Logical volume</li>
+</ul>
+- Kiểm tra các Logical volume đã tạo
+```sh
+lvs
+```
+- Để kiểm tra logical volume chi tiết trong Volume group:
+```sh
+vgs -o +lv_size,lv_name
+```
+ Output
+```sh
+VG   #PV #LV #SN Attr   VSize VFree LSize LV  
+  vg1    3   1   0 wz--n- 4.99g 3.50g 1.49g lv1
+```
+
+####Format và Mounting các Logical volume:
+
+- Format Logical volume:
+```sh
+mkfs.ext4 /dev/<vg_name>/<lv_name>
+```
+
+
+
 
 
