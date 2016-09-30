@@ -163,7 +163,10 @@ total 8
 -rw-r--r-- 1 root root 2394 Sep 29 16:38 initial_backup.tar.gz
 -rw-r--r-- 1 root root  130 Sep 29 16:53 initial.sql.gz
 ```
-
+<a name="3"></a>
+##3. Tài liệu tham khảo
+- http://ntssi.vn/2016/04/tong-quan-ve-full-backup-differential-backup-va-incremental-backup/
+- https://www.digitalocean.com/community/tutorials/how-to-create-an-off-site-backup-of-your-site-with-rsync-on-centos-6
 
 
 
