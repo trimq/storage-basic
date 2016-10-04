@@ -164,9 +164,9 @@ total 8
 -rw-r--r-- 1 root root 2394 Sep 29 16:38 initial_backup.tar.gz
 -rw-r--r-- 1 root root  130 Sep 29 16:53 initial.sql.gz
 ```
-<a name="2.4></a>
 
-###2.3 Incremental Backup
+<a name="2.4></a>
+###2.4 Incremental Backup
 
 - Để tạo Incremental Backup sử dụng lệnh `tar`:
 ```sh
