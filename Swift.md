@@ -7,24 +7,18 @@
 	- [1.1 Account](#11)
 	- [1.2 Container](#12)
 	- [1.3 Object](#13)
-	
 - [2. Kiến Trúc Swift](#2)
 	- [2.1 Regions](#21)
 	- [2.2 Zone](#22)
 	- [2.3 Node](#23)
 	- [2.4 Chính sách lưu trữ](#24)
-	
 - [3. Tiến trình xử lý của server](#3)
-
 - [4. Tiến trình thống nhất](#4)
-
 - [5. Định vị dữ liệu](#5)
 	- [5.1 Cơ bản Ring: Hàm băm](#51)
 	- [5.2 Cơ bản Rings: Hàm băm phù hợp.](#52)
 	- [5.3 Rings: Sửa đổi băm phù hợp](#53)
-
 - [6. Phân phối dữ liệu](#6)
-
 - [7. Tạo và cập nhật Rings](#7)
 
 -----------------------------------------------------------------
@@ -32,7 +26,7 @@
 <a name="1"></a>
 ##1. Mô hình dữ liệu Swift
 
-<img src="">
+<img src="http://i.imgur.com/qePcTmO.png">
 
 OpenStack Swift cho phép người dùng lưu trữ đối tượng dữ liệu phi cấu trúc với tên chuẩn bao gồm: tài khoản(account), Containner, và đối tượng. Sử dụng 1 hoặc nhiều thông tin cho phép hệ thống tạo ra 1 vị trí lưu trữ duy nhất cho dữ liệu.
 
@@ -72,6 +66,7 @@ Từ quan điểm của người dùng, vị trí lưu trữ đối tượng là
 <a name="2"></a>
 ##2. Kiến Trúc Swift
 
+<img src="http://i.imgur.com/tQKSUvf.png">
 Dữ liệu Swift (account, container, object) là những tài nguyên cuối cùng được lưu trữ trên ổ cứng vật lý. 1 máy chạy Swift process sẽ là 1 node, 1 cluster sẽ là nhóm các node chạy tập trung đầy đủ quy trình và các dịch vụ cần thiết để hoạt động như 1 hệ thống lưu trữ phân phối.
 Để đảm bảo độ tin cậy và cô lập lỗi, chúng ta sẽ tổ chức các node và các cluster vào các vùng (region) các zone(khu)
 
@@ -117,7 +112,7 @@ Các tiến trình account cung cấp metadata cho account cá nhân và 1 danh 
 Các tiến trình container quản lý các metadata container và danh sách các dữ liệu object trong mỗi container đó. Các server không biết nơi lưu các đối tượng, nó chỉ biết các container lưu trữ nó. Các danh sách đối tượng được lưu trữ trong cơ sở dữ liệu SQLite. Như với tất cả các dữ liệu của Swift, bản sao của dữ liệu được lưu trữ trên các cluster khác nhau. Các tiến trình container cũng theo dõi số liệu thống kê như tổng số đối tượng và tổng dung lượng lưu trữ của container.
 </li>
 
-<li></b>Object layer</b>: 
+<li><b>Object layer</b>: 
 Các tiến trình object cung cấp các điểm lưu trữ có thể được lưu trữ, truy xuất, xóa các đối tượng trên ổ cứng của các node. Đối tượng được lưu thành các file nhị phân trên các ổ cứng và sử dụng dường dẫn chứa phân vùng của nó cũng như mốc thời gian của từng dữ liệu. Điều này sẽ cho tiến trình lưu trữ nhiều phiên bản của 1 đối tượng trong khi phục vụ các phiên bản mới nhất.
 Metadata của đối tượng được lưu trữ trong phần thuộc tính mở rộng của các tập tin (xattrs), được hỗ trợ bởi hầu hết các hệ thống tập tin ngày nay. Thiết kế này cho phép dữ liệu của đối tượng và metadata được lưu trữ với nhau và đc sao chép cùng với nhau.
 Mỗi đối tượng được lưu trữ như 1 file đơn trên ổ đã trừ khi kích thước của nó vượt quá kích thước tối đa được cấu hình cho Swift. Giá trị kích thước mặc định là khá nhỏ, 5gb để ngăn việc 1 đối tượng có thể làm đầy 1 ổ cứng trong khi các cluster khác thì trống. Nếu 1 đối tượng lớn được lưu trữ, nó được chia thành nhiều phần và được lưu với những dấu hiệu riêng để có thể ghép lại như cũ
@@ -161,24 +156,28 @@ Hạn chế của phương pháp này sẽ là nếu thêm hay bớt 1 ổ thì 
 
 <a name="52"></a>
 ###5.2 Cơ bản Rings: Hàm băm phù hợp.
+<img src="http://i.imgur.com/R4RRA84.png">
 Hàm băm phù hợp sẽ giảm thiểu số lượng đối tượng di chuyển khi ta thêm hoặc bớt ổ cứng trong 1 cluster. Thay vì gán vào 1 giá trị trực tiếp của 1 ổ đĩa (ID ổ)  thì 1 loạt các giá trị sẽ được kết nối vs 1 ổ đĩa. Điều này thực hiện bằng cách lập bản đồ tất cả các giá trị hash có thể thành 1 vòng tròn, sau đó mỗi ổ đĩa sẽ được gán cho 1 điểm trên vòng tròn đó dựa trên 1 giá trị băm của ổ đĩa. (băm ip ô, băm tên ổ...) kết quả là các ổ đĩa sẽ được đặt trong 1 trật tự khá ngẫu nhiên xung quanh 1 vòng tròn. Khi đối tượng cần được lưu trữ, giá trị băm của đối tượng được xác định và nằm trên đường tròn. Sau đó hệ thống sẽ quay theo chiều kim đồng hồ tìm kiếm xung quanh vòng tròn để xác định vị trí các điểm đánh dấu ổ đĩa gần nhất, đây sẽ là ổ đĩa mà đối tượng được đặt. Khi ta thêm 1 ổ đĩa mới, hoặc loại bỏ 1 ổ đĩa thì chỉ 1 vài đối tượng bị ảnh hưởng. Khi 1 ổ đĩa được thêm vào vòng tròn, ổ đĩa tiếp theo theo chiều kim đồng hồ sẽ bị mất đi đối tượng bất kỳ thuộc ổ cũ, những đối tượng này sẽ được sao chép sang ổ mới, phần còn lại ở ổ cũ sẽ vẫn được giữ nguyên, ĐIều này hiệu quản hơn nhiều so với cách cũ.
 Đây là cách đơn giản với mỗi ổ đĩa có 1 điểm đánh dấu. Trong thực tế thì mỗi ổ đĩa có r nhiều dấu trên 1 vòng tròn chứ không chỉ 1 dấu. Hầu hết các hàm băm rings có thể đánh dấu r nhiều thậm chí lên tới hàng trăm đấu cho 1 ổ trên 1 vòng tròn, nó sẽ giúp lưu trữ được nhiều đối tượng hơn vào 1 ổ đĩa, và đối tượng cũng sẽ được hạn chế dịch chuyển hơn.
 
 <a name></a>
 ###5.3 Rings: Sửa đổi băm phù hợp:
+<img src="http://i.imgur.com/Rx2XUdd.png">
 Swift sử dụng Hàm băm phù hợp đã sửa đổi. Những thay đổi này tạo ra 1 rings băm phù hợp với phân vùng sử dụng số bản sao, khóa bản sao, và cơ chế phân phối dữ liệu(như trọng lượng ổ, và vị trí duy nhất có thể) để xây dựng vị trí lưu trữ cá nhân. 1 account ring sẽ được tạo ra cho 1 cluster và được sử dụng để xác định vị trí dữ liệu account. 1 container ring được tạo ra cho 1 cluster và được sử dụng để xác định vị trí container. 1 rings chính sách lưu trữ đối tượng sẽ được tạo cho mỗi chính sách lưu trữ và sự dụng để xác định vị trí dữ liệu.
 
-Partion: Với hàm băm rings chưa sửa đổi khi thêm bớt ổ, nhiều dãy băm sẽ trở nên to hơn hoặc nhỏ đi so với khi ổ đĩa được gắn thêm hoặc bớt đi, những khoảng này có thể dẫn đến việc đối tượng không sẵn sàng khi nó đang di chuyển trong việc thây đổi vị trí ổ. Để ngăn điều này, Swift tiếp cận vòng băm khác nhau, mặc dù ringss vẫn chia thành nhiều dãy băm nhỏ nhưng các dải này sẽ có chung kích thước và sẽ không thay đổi về số lượng. Những vùng này sẽ được fix cố định sau đó được gán cho ổ đĩa bằng thuật toán sắp xếp. Đi vào chi tiết các phần được tính toán như nào và cách các ổ đĩa đc gắn cho chúng.
+####Partion:
+Với hàm băm rings chưa sửa đổi khi thêm bớt ổ, nhiều dãy băm sẽ trở nên to hơn hoặc nhỏ đi so với khi ổ đĩa được gắn thêm hoặc bớt đi, những khoảng này có thể dẫn đến việc đối tượng không sẵn sàng khi nó đang di chuyển trong việc thây đổi vị trí ổ. Để ngăn điều này, Swift tiếp cận vòng băm khác nhau, mặc dù ringss vẫn chia thành nhiều dãy băm nhỏ nhưng các dải này sẽ có chung kích thước và sẽ không thay đổi về số lượng. Những vùng này sẽ được fix cố định sau đó được gán cho ổ đĩa bằng thuật toán sắp xếp. Đi vào chi tiết các phần được tính toán như nào và cách các ổ đĩa đc gắn cho chúng.
 - partion power: 
+ ```sh
  tổng số phân vùng (partion) trong cluster = 2^(partion power)
-
+```
 số lượng driver có thể thay đổi nhưng số partition thì không
 
-Replica count: là số bản sao của từng partion được đặt trên cluster.Ví dụ: nếu bạn có Replica count=3 nghĩa là mỗi partion sẽ được nhân lên 3 lần. Mỗi bản này sẽ được lưu trữ trên các thiết bị khác nhau. Khi object được đưa vào cluster, giá trị băm sẽ phù hợp với 1 partion và được sao chép vào cả 3 vị trí của partion đó (Ngĩa là khi chia thành các partion thì partion cũng đc sao lưu thành 3 lần, dữ liệu vào partion cũng được sao lưu theo partion đó???)
+- <b>Replica count</b>: là số bản sao của từng partion được đặt trên cluster.Ví dụ: nếu bạn có Replica count=3 nghĩa là mỗi partion sẽ được nhân lên 3 lần. Mỗi bản này sẽ được lưu trữ trên các thiết bị khác nhau. Khi object được đưa vào cluster, giá trị băm sẽ phù hợp với 1 partion và được sao chép vào cả 3 vị trí của partion đó (Ngĩa là khi chia thành các partion thì partion cũng đc sao lưu thành 3 lần, dữ liệu vào partion cũng được sao lưu theo partion đó???)
 càng nhiều bản sao càng bảo vệ bạn khỏi việc mất dữ liệu khi xảu ra lỗi(đặc biệt các bản sao ở các vị trí địa lý hoặc trung tâm dữ liệu khác nhau). Replica count là số thực thường mặc định là 3.0. trong 1 vài trường hợp cá biệt, ví dụ 3,15 thì nghĩa là 15% số ổ sẽ có thêm 1 bản sao, tổng cộng là 4. Giúp cho việc thay đổi dần dần từ số nguyên này sang số nguyên khác mà không gây bão hòa mạng.
 Partion replication còn bao gồm ổ đĩa mà nó bàn giao. Nó nghĩa là khi 1 ổ đĩa bị hỏng, các quá trình (replicationg và auditing) sẽ thông báo và đẩy dữ liệu ra khỏi vị trí này,. Điều này làm giảm đáng kể thời gian sửa chữa so với RAID hoặc three-way mirroring. Xác suất mà tất cả các phân vùng nhân rộng trong hệ thống đều hư hỏng trước khi cluster thông báo và kéo dữ liệu ra khỏi đó là rất nhỏ, đó là lý do đảm bảo độ bền của Swift, Tùy thuộc vào việc đảm bảo độ bền mà bạn yêu cầu và việc thất bạn phân tích của thiết bị lưu trữ của bạn, bạn có thể thiết lạp số bản sao hợp lý với nhu cầu mà bạn cần sử dụng
 
-Replica locks: Trong khi 1 partion được di chuyển, thay đổi, Swift sẽ khóa bản sao của phân vùng đó để nó không đủ điều kiện để được di chuyển đảm bảo dữ liệu sẵn có. Khóa được sử dụng cả khi rings được cập nhật cũng như hoạt động khi dữ liệu được thay đổi. Độ dài chính xác của thời gian để khóa các partion được thiết lập bởi trường "min_part_hours"
+- <b>Replica locks</b>: Trong khi 1 partion được di chuyển, thay đổi, Swift sẽ khóa bản sao của phân vùng đó để nó không đủ điều kiện để được di chuyển đảm bảo dữ liệu sẵn có. Khóa được sử dụng cả khi rings được cập nhật cũng như hoạt động khi dữ liệu được thay đổi. Độ dài chính xác của thời gian để khóa các partion được thiết lập bởi trường "min_part_hours"
 
 <a name="6"></a>
 ##6. Phân phối dữ liệu:
