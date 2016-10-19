@@ -35,10 +35,12 @@ Nếu bạn gửi yêu cầu tới các Swift cluster, nó phải chứa đủ c
 #####Storage URL:
 Các storage URL có 2 vai trò cần quan tâm: dó là cách yêu cầu gửi đến cluster và phải chỉ ra được vị trí trong cluster mà yêu cầu nhắm đến
 Ví dụ, Storage URL có dạng
+```sh
 https://swift.example.com/v1/account/container/object
+```
 Nó sẽ gồm có 2 thành phần cơ bản:
-- Vị trí cluster (swift.example.com/v1): Phần đầu của Storage URL là 1 endpoint trong cluster. Nó được sửu dụng bởi việc mạng sẽ định tuyến yêu cyaf tới các node có tiến trình máy chủ proxy để yêu cầu của bạn có thể được sử lý
-- Vị trí lưu trữ (account/container/object): bào gồm 1 hoặc nhiều phần tạo nên sự duy nhất của vị trí dữ liệu. Các vị trí lưu trữ ccos thể là 1 trong 3 dạng tùy thuộc vào tài nnguyeen mà bạn đang có gắng gửi yêu cầu:
+- <b>Vị trí cluster (swift.example.com/v1)</b>: Phần đầu của Storage URL là 1 endpoint trong cluster. Nó được sửu dụng bởi việc mạng sẽ định tuyến yêu cyaf tới các node có tiến trình máy chủ proxy để yêu cầu của bạn có thể được sử lý
+- <b>Vị trí lưu trữ (account/container/object)</b>: bao gồm 1 hoặc nhiều phần tạo nên sự duy nhất của vị trí dữ liệu. Các vị trí lưu trữ ccos thể là 1 trong 3 dạng tùy thuộc vào tài nnguyeen mà bạn đang có gắng gửi yêu cầu:
  + Account: /account
  + Container: /account/container
  + Object: /account/container/object
