@@ -11,7 +11,7 @@
 - [3. Ứng dụng client tùy chỉnh](#3)
 - [4. Example Scenarios ](#4)
 -----------------------------------------------------------
-
+<a name="1"></a>
 ##1. Giao tiếp với Cluster: Swift API
 Swift giành rất nhiều thời gian cho nhưng hoạt động, những yêu cầu gửi tới để đẩy dữ liệu lên các cluster, những dữ liệu này được sao chép và viết lên nhiều node khác nhau. Cũng có những yêu cầu lấy dữ liệu khỏi các cluster, như để khôi phục backup hoặc phụ vụ nội dung cho trang web chơi game trực tuyến. Đối với mỗi yêu cầu, Swift có thể kiểm tra xem ai được phép thực hiện yêu cầu trước khi nó được xử lý và đáp ứng. Ngoài ra thêm vào đó, các tiến trình server hay tiến trình consistency tràn ngập phía sau đòi hỏi phải có thông tin liên lạc và phối hợp giữa tất cả
 Như đã đề cập ở chương 3, tiến trình máy chủ proxy là thành phần duy nhất giao tiếp với client bên ngoài. Bởi chỉ có mỗi tiến trình proxy thực thi được Swift API. Ở thời điểm này chúng ta có thể hiểu đơn giản rằng Swift API là tập HTTP dựa trên quy tắc, cú pháp từ vựng mà các tiến trình máy chỉ proxy dùng để giao tiếp với bên ngoài. Chúng ta sẽ tìm hiểu rõ hơn về API Swift ở chapter 5. Điểm nổi bật cảu tiến trình máy chủ proxy là tiến trình duy nhất có thể giao tiếp phía bên ngoài cluster, và nó sẽ lắng nghe cũng như thực thi HTTP
