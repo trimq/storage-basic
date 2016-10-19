@@ -3,13 +3,17 @@
 #Mục lục:
 **Table of Content**
 
-- [1. Giao tiếp với Cluster: Swift API](#1)
+-[1. Giao tiếp với Cluster: Swift API](#1)
 	- [1.1 Gửi yêu cầu](#11)
 	- [1.2 Ủy quyền](#12)
 	- [1.3 Phản hồi](#13)
-- [2. Các tool giao tiếp](#2)
-- [3. Ứng dụng client tùy chỉnh](#3)
-- [4. Example Scenarios ](#4)
+	
+-[2. Các tool giao tiếp](#2)
+
+-[3. Ứng dụng client tùy chỉnh](#3)
+
+-[4. Example Scenarios ](#4)
+
 -----------------------------------------------------------
 <a name="1"></a>
 ##1. Giao tiếp với Cluster: Swift API
@@ -122,6 +126,7 @@ Chúng ta cùng xem xét 1 vài ví dụ về HTTP GET từ 1 người dùng tê
 sử dụng Swift CLI là 1 phần của gói python-swiftclient và có thể được cài đặt hoặc trên những máy đã có python2.6 hoặc 2.7.
 Giống như việc cURl sử dụng lệnh curl thì Swift cũng sử dụng lệnh swift. Lệnh Swift là đơn gian cho người dùng, bằng cách ngắn gọn hơn làm cho 1 số yêu cầu phổ biến trở nên đơn giản hơn. Tuy nhiên, sự đơn giản hóa này đi kèm với chi phí, lệnh Swift không thể làm tất cả những j mà hệ thống lưu trữ Swift có thể làm, Nó chỉ có 1 vài loại yêu cầu HTTP với câu lệnh Swift. Lý do khiến câu lệnh Swift phổ biến là vì nó cung cấp người sử dụng các động từ thông dụng với con người dùng để giao tiếp với cluster. Nó có thể dịch sang được ngôn ngữ HTTP. Điểm tối với câu lệnh này là nói yêu cầu bạn phải có thông tin xác thực với mỗi câu lệnh
 Một số lệnh Swift tương ứng với HTTP như sau:
+```sh
 - delete(HTTP DELETE)
  xóa container hoặc object trong container
 - download (HTTP GET)
@@ -140,16 +145,16 @@ curl -X GET [...] http://swift.example.com/v1/AUTH_bob/container1/object.jpg
 và 
 
 swift download -U myusername -K mysecretpassword -A https://swift.example.com/auth/v1.0  http://swift.example.com/v1/AUTH_bob/container1/object.jpg
-
+```
 là tương tự nhau vì mỗi lần thực hiện yêu cầu Swift đều yêu cầu thông tin người dùng để xác thực nên ta tạm thời ký hiệu là [_] cho dễ đọc.
-
+```sh
 - List toàn bộ container trong account: 
 swift list [...] http://swift.example.com/v1/AUTH_bob 
 - List toàn bộ đối tượng trong container
 swift list [...] http://swift.example.com/v1/AUTH_bob/container1 
 - Tải về đối tượng
 swift download [...] http://swift.example.com/v1/AUTH_bob/container1 object.jpg 
-
+```
 <a name="3"></a>
 ###3. Ứng dụng client tùy chỉnh
 Mặc dù sử dụng lệnh là đủ cho các thao tác đơn gian, tuy nhiên nhiều người dùng muốn nhiều hơn các ứng dụng tinh vi vó thể tùy chỉnh và thích hợp. Các ứng dụng mà các developers có thể xây dựng yêu cầu HTTP và phân tích cú pháp http là các thư viện http của các ngôn ngữ trong đó có Python
