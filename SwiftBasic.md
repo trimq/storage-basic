@@ -3,16 +3,16 @@
 #Mục lục:
 **Table of Content**
 
--[1. Giao tiếp với Cluster: Swift API](#1)
+- [1. Giao tiếp với Cluster: Swift API](#1)
 	- [1.1 Gửi yêu cầu](#11)
 	- [1.2 Ủy quyền](#12)
 	- [1.3 Phản hồi](#13)
 	
--[2. Các tool giao tiếp](#2)
+- [2. Các tool giao tiếp](#2)
 
--[3. Ứng dụng client tùy chỉnh](#3)
+- [3. Ứng dụng client tùy chỉnh](#3)
 
--[4. Example Scenarios ](#4)
+- [4. Example Scenarios ](#4)
 
 -----------------------------------------------------------
 <a name="1"></a>
