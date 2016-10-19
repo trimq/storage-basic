@@ -1,4 +1,4 @@
-#Khái niệm cơ bản về Swift
+#Swift Basics
 
 #Mục lục:
 **Table of Content**
@@ -109,7 +109,7 @@ cURL gồm các thành phần sau:
 
 curl -X <HTTL-verb> [] <storage-url> <object.ext>
 ```
-Chúng ta cùng xem xét 1 vài ví dụ về HTTP GET từ 1 người dùng tên Bob để xem cách cURL được sử dụng cho object, container, account. 1 cách phổ biến để sử dụng Swift là nơi mọi người dùng đều có chính xác 1 tài khoảnh. Chúng ra sẽ sử dụng mô hinhg đó ở đây, nên URL cho Bob sẽ là  http://swift.example.com/v1/AUTH_bob. Đây sẽ là những tác vụ mà Bob sẽ thực hiên thông thường trong Swift.
+Chúng ta cùng xem xét 1 vài ví dụ về HTTP GET từ 1 người dùng tên Bob để xem cách cURL được sử dụng cho object, container, account. 1 cách phổ biến để sử dụng Swift là nơi mọi người dùng đều có chính xác 1 tài khoảnh. Chúng ra sẽ sử dụng mô hinhg đó ở đây, nên URL cho Bob sẽ là `http://swift.example.com/v1/AUTH_bob`. Đây sẽ là những tác vụ mà Bob sẽ thực hiên thông thường trong Swift.
 ```sh
 - Tạo conainter mới: tạo lệnh put với vị trí container mới
  curl -X PUT [...] http://swift.example.com/v1/AUTH_bob/container2 
@@ -162,6 +162,8 @@ Mặc dù sử dụng lệnh là đủ cho các thao tác đơn gian, tuy nhiên
 <a name="4"></a>
 ###4. Example Scenarios 
 Chúng ta sẽ xem xét qua 2 kịch bản là tải lên và tải về dữ liệu để có thể hiểu rõ hơn cách mà Swift hoạt động
-- Upload(PUT): Client sử dụng Swift APi để tạo yêu cầu HTTP PUT 1 đối tượng vào 1 container. Sau khi nhận yêu cầu PUT, tiến trình máy chủ proxy xác định vị trí dữ liệu hướng tới. Tên account, tên container, tên object, tất cả được sử dụng để xác định partion nơi mà đối tượng được lưu. 1 tra cứu trong rings thích hợp sẽ được sử dụng để map vị trí lưu trữ (/account/container/ object) tới partion và với tập các nút lưu trữ trong đó có mỗi bản sao của partion được phân công
+- <b>Upload(PUT)</b>: 
+Client sử dụng Swift APi để tạo yêu cầu HTTP PUT 1 đối tượng vào 1 container. Sau khi nhận yêu cầu PUT, tiến trình máy chủ proxy xác định vị trí dữ liệu hướng tới. Tên account, tên container, tên object, tất cả được sử dụng để xác định partion nơi mà đối tượng được lưu. 1 tra cứu trong rings thích hợp sẽ được sử dụng để map vị trí lưu trữ (/account/container/ object) tới partion và với tập các nút lưu trữ trong đó có mỗi bản sao của partion được phân công
 Dữ liệu được gửi tới từng node lưu trữ, nơi mà có các partion thích hợp. Khi phần lớn dữ liệu được viết thành công, tiến trình máy chủ proxy có thể thông báo tới khách hàng quá trình upload đã thành công, VÍ dụ nếu bạn sử dụng 3 bản sao thì khi viết được 2 bản sao sẽ là thành công. Sau đó database container sẽ được cập nhật không đồng bộ để thể hiện các đối tượng mới trong container
-- Download (GET): 1 yêu cầu đến tiến trình máy chủ proxy  /account/container/object Sửn dụng ring phù hợp để tra cứu, các partion của yêu cầu sẽ được xác định, cùng với tập hợp các node lưu trữ vùng đó. Mỗi yêu cầu sẽ được gửu đến các node lưu trữ để lấy tài nguyên. Sau khi yêu cầu trả về object thì tiến tình proxy sẽ trả về cho client.
+- <b>Download (GET)</b>: 
+1 yêu cầu đến tiến trình máy chủ proxy  /account/container/object Sửn dụng ring phù hợp để tra cứu, các partion của yêu cầu sẽ được xác định, cùng với tập hợp các node lưu trữ vùng đó. Mỗi yêu cầu sẽ được gửu đến các node lưu trữ để lấy tài nguyên. Sau khi yêu cầu trả về object thì tiến tình proxy sẽ trả về cho client.
